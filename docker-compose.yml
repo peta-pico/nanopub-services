@@ -1,0 +1,44 @@
+version: '2'
+services:
+  nanopub:
+    image: tkuhn/nanopub-server
+    depends_on:
+      - db
+      - rdfsink
+    environment:
+      - NPS_MONGODB_HOST=db
+      - NPS_COLLECT_NANOPUBS_ENABLED=true
+#      - NPS_PUBLIC_URL=http://.../
+      - NPS_POST_NEW_NANOPUBS_TO=http://rdfsink:80
+      - NPS_WAIT_MS_BEFORE_PEER_SCAN=1000
+    ports:
+      - 8080:8080
+  db:
+    image: mongo
+    volumes:
+      - ./data/mongodb:/data/db
+  rdfsink:
+    image: tkuhn/rdfsink
+    depends_on:
+      - virtuoso
+    environment:
+      - ENDPOINT=http://virtuoso:8890/sparql
+      - UPDATE_ENDPOINT=http://virtuoso:8890/sparql
+      - MODULE=nanopub
+#      - USERNAME=dba
+#      - PASSWORD=dba
+    volumes:
+      - ./data/rdfsink:/data
+  virtuoso:
+#    image: tkuhn/virtuoso
+    image: tenforce/virtuoso:1.0.0-virtuoso7.2.4
+    ports:
+      - 8890:8890
+      - 1111:1111
+    environment:
+      - SPARQL_UPDATE=true
+#      - DBA_PASSWORD=dba
+      - DEFAULT_GRAPH=http://www.example.com/dummy-graph
+    volumes:
+      - ./data/virtuoso:/data
+
