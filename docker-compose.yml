@@ -2,6 +2,7 @@ version: '2'
 services:
   nanopub:
     image: tkuhn/nanopub-server
+    restart: unless-stopped
     depends_on:
       - db
       - rdfsink
@@ -15,10 +16,12 @@ services:
       - 8080:8080
   db:
     image: mongo
+    restart: unless-stopped
     volumes:
       - ./data/mongodb:/data/db
   rdfsink:
     image: tkuhn/rdfsink
+    restart: unless-stopped
     depends_on:
       - virtuoso
     environment:
@@ -30,8 +33,9 @@ services:
     volumes:
       - ./data/rdfsink:/data
   virtuoso:
-#    image: tkuhn/virtuoso
-    image: tenforce/virtuoso:1.0.0-virtuoso7.2.4
+    image: tkuhn/virtuoso
+#    image: tenforce/virtuoso:1.0.0-virtuoso7.2.4
+    restart: unless-stopped
     ports:
       - 8890:8890
       - 1111:1111
@@ -41,4 +45,14 @@ services:
       - DEFAULT_GRAPH=http://www.example.com/dummy-graph
     volumes:
       - ./data/virtuoso:/data
-
+  grlc:
+    image: clariah/grlc
+    restart: unless-stopped
+    ports:
+     - 8001:80
+    environment:
+     - DEBUG=true
+     - USERMAP_GID=1000
+     - USERMAP_UID=1000
+    volumes:
+     - ./data/grlc:/home/grlc/queries

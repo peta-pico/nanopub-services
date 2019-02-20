@@ -4,7 +4,17 @@ Show admin graph:
 
 Fix for latest version of Virtuoso:
 
-    docker exec -ti eb1c904891b0 bash -c 'echo "GRANT SPARQL_UPDATE to \"SPARQL\";" | isql-v -U dba -P dba'
+    $ docker pull tenforce/virtuoso:latest
+    $ IMG=$(docker run -d tenforce/virtuoso)
+    $ docker exec -ti $IMG bash -c 'echo "GRANT SPARQL_UPDATE to \"SPARQL\";" | isql-v -U dba -P dba'
+    $ docker commit $IMG tkuhn/virtuoso
+    $ docker push tkuhn/virtuoso:latest
+
+    $ docker exec -it $IMG bash
+    $ docker commit -c 'CMD ["bash", "echo \"GRANT SPARQL_UPDATE to \\\"SPARQL\\\";\" | isql-v -U dba -P dba"]' $IMG tkuhn/virtuoso
+
+    $ ( head -n -1 /virtuoso.sh ; echo 'virtuoso-t +wait && ( echo "GRANT SPARQL_UPDATE to \"SPARQL\";" | isql-v -U dba -P dba )' ; echo "kill \"\$(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')\"" ; tail -1 /virtuoso.sh ) > ./virtuoso.new.sh
+    $ mv ./virtuoso.new.sh ./virtuoso.sh
 
 Testing queries...:
 
