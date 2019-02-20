@@ -1,0 +1,9 @@
+prefix npa: <http://purl.org/nanopub/admin/>
+
+npa:graph {
+  <*NPURI*> npa:hasHeadGraph <*HEADURI*> ;
+    npa:creationDay "*YEAR-MONTH-DAY*" ;
+    npa:creationMonth "*YEAR-MONTH*" ;
+    npa:creationYear "*YEAR*" ;
+    npa:hasValidSignatureForPublicKey "*PUBLICKEY*" .  
+}
