@@ -47,8 +47,8 @@ services:
     volumes:
       - ./data/virtuoso:/data
   grlc:
-    image: tkuhn/grlc
-#    image: clariah/grlc:dev
+#    image: tkuhn/grlc
+    image: clariah/grlc:dev
     restart: unless-stopped
     ports:
      - 8001:80
@@ -57,5 +57,5 @@ services:
      - USERMAP_GID=1000
      - USERMAP_UID=1000
     volumes:
-     - ./data/grlc/nanopub-api:/home/grlc/nanopub-api
-#     - ./data/grlc/nanopub-api:/home/grlc/queries
+#     - ./data/grlc/nanopub-api:/home/grlc/nanopub-api
+     - ./data/grlc/nanopub-api:/home/grlc/queries
