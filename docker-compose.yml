@@ -28,26 +28,19 @@ services:
       - ENDPOINT=http://virtuoso:8890/sparql
       - UPDATE_ENDPOINT=http://virtuoso:8890/sparql
       - MODULE=nanopub
-#      - USERNAME=dba
-#      - PASSWORD=dba
     volumes:
       - ./data/rdfsink:/data
   virtuoso:
-    image: tenforce/virtuoso:latest
-#    image: tkuhn/virtuoso:latest
-#    image: tenforce/virtuoso:1.0.0-virtuoso7.2.4
+    image: tenforce/virtuoso
     restart: unless-stopped
     ports:
       - 8890:8890
       - 1111:1111
     environment:
       - SPARQL_UPDATE=true
-#      - DBA_PASSWORD=dba
-      - DEFAULT_GRAPH=http://www.example.com/dummy-graph
     volumes:
       - ./data/virtuoso:/data
   grlc:
-#    image: tkuhn/grlc
     image: clariah/grlc:dev
     restart: unless-stopped
     ports:
@@ -57,5 +50,4 @@ services:
      - USERMAP_GID=1000
      - USERMAP_UID=1000
     volumes:
-#     - ./data/grlc/nanopub-api:/home/grlc/nanopub-api
      - ./data/grlc/nanopub-api:/home/grlc/queries
