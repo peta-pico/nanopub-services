@@ -1,7 +1,7 @@
 version: '2'
 services:
   nanopub:
-    image: tkuhn/nanopub-server
+    image: nanopub/server
     restart: unless-stopped
     depends_on:
       - db
@@ -15,12 +15,13 @@ services:
     ports:
       - 8080:8080
   db:
-    image: mongo
+    image: nanopub/mongo
+#    image: mongo
     restart: unless-stopped
     volumes:
       - ./data/mongodb:/data/db
   rdfsink:
-    image: tkuhn/rdfsink
+    image: nanopub/rdfsink
     restart: unless-stopped
     depends_on:
       - virtuoso
@@ -31,7 +32,8 @@ services:
     volumes:
       - ./data/rdfsink:/data
   virtuoso:
-    image: tenforce/virtuoso
+    image: nanopub/virtuoso
+#    image: tenforce/virtuoso
     restart: unless-stopped
     ports:
       - 8890:8890
@@ -41,7 +43,8 @@ services:
     volumes:
       - ./data/virtuoso:/data
   grlc:
-    image: clariah/grlc:dev
+    image: nanopub/grlc
+#    image: clariah/grlc:dev
     restart: unless-stopped
     ports:
      - 8001:80
