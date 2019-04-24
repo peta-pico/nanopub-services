@@ -3,7 +3,7 @@
 # It's recommended to run
 #   $ docker-compose stop
 # before, and
-#   $ docker compose start
+#   $ docker-compose start
 # after running this script.
 
 sudo tar -zcvf data/mongodb.tar.gz data/mongodb
