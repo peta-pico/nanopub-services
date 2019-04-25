@@ -1,0 +1,3 @@
+[submodule "nginx/tapas"]
+	path = nginx/tapas
+	url = git@github.com:peta-pico/tapas.git

@@ -1,6 +1,6 @@
 version: '2'
 services:
-  nanopub:
+  server:
     image: nanopub/server
     restart: unless-stopped
     depends_on:
@@ -12,8 +12,8 @@ services:
 #      - NPS_PUBLIC_URL=http://.../
       - NPS_POST_NEW_NANOPUBS_TO=http://rdfsink:80
       - NPS_WAIT_MS_BEFORE_PEER_SCAN=1000
-    ports:
-      - 8080:8080
+#    ports:
+#      - 8080:8080
   db:
     image: nanopub/mongo
 #    image: mongo
@@ -35,9 +35,9 @@ services:
     image: nanopub/virtuoso
 #    image: tenforce/virtuoso
     restart: unless-stopped
-    ports:
-      - 8890:8890
-      - 1111:1111
+#    ports:
+#      - 8890:8890
+#      - 1111:1111
     environment:
       - SPARQL_UPDATE=true
     volumes:
@@ -46,11 +46,17 @@ services:
     image: nanopub/grlc
 #    image: clariah/grlc:dev
     restart: unless-stopped
-    ports:
-     - 8001:80
+#    ports:
+#     - 8001:80
     environment:
      - DEBUG=true
      - USERMAP_GID=1000
      - USERMAP_UID=1000
     volumes:
      - ./data/grlc/nanopub-api:/home/grlc/queries
+  nginx:
+    image: nanopub/nginx
+    restart: unless-stopped
+    ports:
+     - 8088:80
+
