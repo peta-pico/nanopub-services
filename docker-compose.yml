@@ -49,7 +49,7 @@ services:
 #    ports:
 #     - 8001:80
     environment:
-     - DEBUG=true
+     - GRLC_SPARQL_ENDPOINT=http://virtuoso:8890/sparql/
      - USERMAP_GID=1000
      - USERMAP_UID=1000
     volumes:
