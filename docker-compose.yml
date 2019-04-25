@@ -52,8 +52,8 @@ services:
      - GRLC_SPARQL_ENDPOINT=http://virtuoso:8890/sparql/
      - USERMAP_GID=1000
      - USERMAP_UID=1000
-    volumes:
-     - ./data/grlc/nanopub-api:/home/grlc/queries
+#    volumes:
+#     - ./data/grlc/nanopub-api:/home/grlc/queries
   nginx:
     image: nanopub/nginx
     restart: unless-stopped
