@@ -2,25 +2,6 @@ Show admin graph:
 
     select ?a ?b ?c where { graph <http://purl.org/nanopub/admin/graph> { ?a ?b ?c } } limit 1000
 
-Fix for latest version of Virtuoso:
-
-    $ docker pull tenforce/virtuoso:latest
-    $ C=$(docker run -d tenforce/virtuoso:latest)
-    $ docker exec -ti $C bash -c 'echo "GRANT SPARQL_UPDATE to \"SPARQL\";" | isql-v -U dba -P dba'
-    $ docker commit $C tkuhn/virtuoso
-    $ docker push tkuhn/virtuoso:latest
-
-    $ docker exec -it $C bash
-    $ docker commit -c 'CMD ["bash", "echo \"GRANT SPARQL_UPDATE to \\\"SPARQL\\\";\" | isql-v -U dba -P dba"]' $IMG tkuhn/virtuoso
-
-    $ ( head -n -1 /virtuoso.sh ; echo 'virtuoso-t +wait && ( echo "GRANT SPARQL_UPDATE to \"SPARQL\";" | isql-v -U dba -P dba )' ; echo "kill \"\$(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')\"" ; tail -1 /virtuoso.sh ) > ./virtuoso.new.sh
-    $ mv ./virtuoso.new.sh ./virtuoso.sh
-
-    command: bash -c "virtuoso-t +wait && ( echo \"GRANT SPARQL_UPDATE to \\\"SPARQL\\\";\" | isql-v -U dba -P dba ) ; kill \"\$$(ps aux | grep '[v]irtuoso-t' | awk '{print $$2}')\" ; /bin/bash /virtuoso.sh"
-
-    $ docker exec -ti $C bash -c 'rm .dba_pwd_set ; echo "GRANT SPARQL_UPDATE to \"SPARQL\";" > /sql-query.sql'
-
-
 Testing queries...:
 
 prefix np: <http://www.nanopub.org/nschema#>
