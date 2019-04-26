@@ -56,9 +56,12 @@ services:
      - USERMAP_UID=1000
 #    volumes:
 #     - ./data/grlc/nanopub-api:/home/grlc/queries
+  ldf:
+    image: nanopub/ldf
+    ports:
+      - 3000:3000
   nginx:
     image: nanopub/nginx
     restart: unless-stopped
     ports:
      - 8088:80
-
