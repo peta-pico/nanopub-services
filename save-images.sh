@@ -2,9 +2,9 @@
 
 mkdir -p images
 
-docker save -o images/nanopub-mongo.tar nanopub/mongo
-docker save -o images/nanopub-server.tar nanopub/server
-docker save -o images/nanopub-rdfsink.tar nanopub/rdfsink
-docker save -o images/nanopub-virtuoso.tar nanopub/virtuoso
-docker save -o images/nanopub-grlc.tar nanopub/grlc
-docker save -o images/nanopub-nginx.tar nanopub/nginx
+docker save nanopub/mongo | gzip -c > images/nanopub-mongo.tar.gz
+docker save nanopub/server | gzip -c > images/nanopub-server.tar.gz
+docker save nanopub/rdfsink | gzip -c > images/nanopub-rdfsink.tar.gz
+docker save nanopub/virtuoso | gzip -c > images/nanopub-virtuoso.tar.gz
+docker save nanopub/grlc | gzip -c > images/nanopub-grlc.tar.gz
+docker save nanopub/nginx | gzip -c > images/nanopub-nginx.tar.gz
