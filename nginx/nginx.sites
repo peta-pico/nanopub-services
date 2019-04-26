@@ -1,5 +1,8 @@
 server {
   listen 80;
+  location ~ ^/$ {
+    return 301 ./site/;
+  }
   location /server/ {
         proxy_set_header X-Forwarded-Host $host;
         proxy_set_header X-Forwarded-Server $host;
