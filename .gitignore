@@ -3,3 +3,4 @@
 /images
 /packaged-dbs
 /scratch
+/docker-compose.override.yml
