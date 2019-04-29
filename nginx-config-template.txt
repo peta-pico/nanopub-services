@@ -1,0 +1,32 @@
+server {
+  listen 80;
+  server_name server.np.YOUR.SERVER.DOMAIN;
+  location / {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:7880/;
+  }
+}
+
+server {
+  listen 80;
+  server_name grlc.np.YOUR.SERVER.DOMAIN;
+  location / {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:7881/;
+  }
+}
+
+server {
+  listen 80;
+  server_name ldf.np.YOUR.SERVER.DOMAIN;
+  location / {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:7882/;
+  }
+}
