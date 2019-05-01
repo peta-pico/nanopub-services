@@ -24,8 +24,8 @@ services:
 
 The data will be stored in a directory called `data` in your `nanopub-services`
 directory (around 32 GB, and growing). If the data should be stored somewhere
-else (e.g. because of performance or space reasons), you should make a symbolic
-link pointing to the other location like this (run within `nanopub-services`):
+else, e.g. because of performance or space reasons, you should make a symbolic
+link like this:
 
     $ ln -s /location/where/data/should/be/stored data
 
@@ -34,26 +34,26 @@ _(TODO: add info here how to download and unpack pre-built database images)_
 
 ### Step 3: Configure web server and services
 
-Configure your web server (e.g. nginx or Apache) to forward three subdomains to
-the three public-facing nanopub services (called here `server`, `grlc`, and
-`ldf`). An example for nginx can be found [here](nginx-config-template.txt).
-Replace `YOUR.SERVER.DOMAIN` with your actual server domain (e.g. `example.com`
-or `mygroup.example.com`).
+Configure your web server to forward three subdomains to the three public-facing
+nanopub services `server`, `grlc`, and `ldf`. An example for nginx can be found
+[here](nginx-config-template.txt). Replace `YOUR.SERVER.DOMAIN` with your actual
+server domain (e.g. `example.com` or `mygroup.example.com`).
 
-Then we also need to configure our services. Make a copy of the
+The services themselves also need some small configuration. Make a copy of the
 docker-compose.override template:
 
     $ cp docker-compose.override.yml.template docker-compose.override.yml
 
 In the file `docker-compose.override.yml` replace
 `http://server.np.YOUR.SERVER.DOMAIN` with the actual URL for the `server`
-container on your web server (e.g. `http://server.np.example.com/`). This needs
-to end with a slash `/`. The chosen URL has to be the same as above.
+container on your web server (e.g. `http://server.np.example.com/`), and
+similarly with `http://ldf.np.YOUR.SERVER.DOMAIN/` for the `ldf` container.
+These URLs need to end with a slash `/`, and they need to match the domains
+defined above.
 
-If you need to do any other changes to the configuration found in
-`docker-compose.yml`, just add it to the file `docker-compose.override.yml` and
-do _not_ edit `docker-compose.yml` itself (it will lead to problems with
-updating).
+(If you need to do any other changes to the configuration found in
+`docker-compose.yml`, just add it to the file `docker-compose.override.yml`.
+Directly editing `docker-compose.yml` will lead to problems with updating.)
 
 
 ### Step 4: Start services
