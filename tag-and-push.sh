@@ -1,7 +1,5 @@
 #!/bin/bash
 
-docker-compose pull
-
 DATE=$(date +%Y%m%d)
 
 docker tag nanopub/mongo nanopub/mongo:$DATE
