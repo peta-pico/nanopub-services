@@ -65,3 +65,5 @@ services:
     image: nanopub/ldf
     ports:
       - 7882:3000
+#    environment:
+#      - BASEURL=http://.../

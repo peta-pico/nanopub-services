@@ -23,9 +23,9 @@ services:
 ### Step 2: Setup the data directory
 
 The data will be stored in a directory called `data` in your `nanopub-services`
-directory. If the data should be stored somewhere else (e.g. because of
-performance or space reasons), you should make a symbolic link pointing to the
-other location like this (run within `nanopub-services`):
+directory (around 32 GB, and growing). If the data should be stored somewhere
+else (e.g. because of performance or space reasons), you should make a symbolic
+link pointing to the other location like this (run within `nanopub-services`):
 
     $ ln -s /location/where/data/should/be/stored data
 

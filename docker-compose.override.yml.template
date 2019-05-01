@@ -3,3 +3,6 @@ services:
   server:
     environment:
       - NPS_PUBLIC_URL=http://server.np.YOUR.SERVER.DOMAIN/
+  ldf:
+    environment:
+      - BASEURL=http://ldf.np.YOUR.SERVER.DOMAIN/
