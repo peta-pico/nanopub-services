@@ -43,9 +43,10 @@ you can download and extract pre-built database packages:
 ### Step 3: Configure web server and services
 
 Configure your web server to forward three subdomains to the three public-facing
-nanopub services `server`, `grlc`, and `ldf`. An example for nginx can be found
-[here](nginx-config-template.txt). Replace `YOUR.SERVER.DOMAIN` with your actual
-server domain (e.g. `example.com` or `mygroup.example.com`).
+nanopub services `server`, `grlc`, and `ldf`. See the configuration template for
+[Nginx](nginx-config-template.conf) and [Apache](apache-config-template.conf).
+Replace `YOUR.SERVER.DOMAIN` with your actual server domain (e.g. `example.com`
+or `mygroup.example.com`).
 
 The services themselves also need some small configuration. For that, make a
 copy of the docker-compose.override template:
