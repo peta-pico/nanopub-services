@@ -72,8 +72,8 @@ Now you should be able to start the services with Docker Compose:
     $ docker-compose up -d
 
 You should now be able to access the services via the subdomains defined above
-(you might have to restart your web server, e.g. with `sudo service nginx
-restart`).
+(you might have to restart your web server, e.g. with `service nginx restart`
+or `service apache2 restart`).
 
 
 ## Updating
