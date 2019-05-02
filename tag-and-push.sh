@@ -17,3 +17,11 @@ docker push nanopub/virtuoso:$DATE
 docker push nanopub/grlc:$DATE
 docker push nanopub/nginx:$DATE
 docker push nanopub/ldf:$DATE
+
+docker push nanopub/mongo
+docker push nanopub/server
+docker push nanopub/rdfsink
+docker push nanopub/virtuoso
+docker push nanopub/grlc
+docker push nanopub/nginx
+docker push nanopub/ldf

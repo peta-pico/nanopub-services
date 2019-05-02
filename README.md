@@ -25,11 +25,19 @@ services:
 The data will be stored in a directory called `data` in your `nanopub-services`
 directory (around 32 GB, and growing). If the data should be stored somewhere
 else, e.g. because of performance or space reasons, you should make a symbolic
-link like this:
+link like this (run this and the following commands in the `nanopub-services`
+directory):
 
     $ ln -s /location/where/data/should/be/stored data
 
-_(TODO: add info here how to download and unpack pre-built database images)_
+These services will automatically sync with the network, but to speed things up,
+you can download and extract pre-built database packages:
+
+    $ wget https://zenodo.org/record/2656547/files/mongodb0.tar.gz
+    $ tar -xvzf mongodb0.tar.gz && rm mongodb0.tar.gz
+
+    $ wget https://zenodo.org/record/2656547/files/virtuoso.tar.gz
+    $ tar -xvzf virtuoso.tar.gz && rm virtuoso.tar.gz
 
 
 ### Step 3: Configure web server and services
@@ -39,8 +47,8 @@ nanopub services `server`, `grlc`, and `ldf`. An example for nginx can be found
 [here](nginx-config-template.txt). Replace `YOUR.SERVER.DOMAIN` with your actual
 server domain (e.g. `example.com` or `mygroup.example.com`).
 
-The services themselves also need some small configuration. Make a copy of the
-docker-compose.override template:
+The services themselves also need some small configuration. For that, make a
+copy of the docker-compose.override template:
 
     $ cp docker-compose.override.yml.template docker-compose.override.yml
 
@@ -52,8 +60,8 @@ These URLs need to end with a slash `/`, and they need to match the domains
 defined above.
 
 (If you need to do any other changes to the configuration found in
-`docker-compose.yml`, just add it to the file `docker-compose.override.yml`.
-Directly editing `docker-compose.yml` will lead to problems with updating.)
+`docker-compose.yml`, just add them to the file `docker-compose.override.yml`.
+Directly editing `docker-compose.yml` can lead to problems when updating.)
 
 
 ### Step 4: Start services
