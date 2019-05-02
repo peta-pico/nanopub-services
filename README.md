@@ -8,7 +8,8 @@ Data Fragments server.
 
 ## Setup
 
-The nanopublication services can be setup by following these four steps.
+The nanopublication services can be setup by following these four steps. It
+assumes that your server has a recent version of Docker installed.
 
 
 ### Step 1: Clone this repository
