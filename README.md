@@ -57,8 +57,10 @@ copy of the docker-compose.override template:
 In the file `docker-compose.override.yml` replace
 `http://server.np.YOUR.SERVER.DOMAIN` with the actual URL for the `server`
 container on your web server (e.g. `http://server.np.example.com/`), and
-similarly with `ldf` and `grlc` containers. These URLs need to end with a slash
-`/`, and they need to match the domains defined above.
+similarly with `ldf`. These URLs need to end with a slash `/`, and they need to
+match the domains defined above. For `grlc`, you also need to specify the
+server, but here just the plain server name without `http://` and without a
+final slash.
 
 (If you need to do any other changes to the configuration found in
 `docker-compose.yml`, just add them to the file `docker-compose.override.yml`.

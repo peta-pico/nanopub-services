@@ -8,4 +8,4 @@ services:
       - BASEURL=http://ldf.np.YOUR.SERVER.DOMAIN/
   grlc
     environment:
-      - GRLC_SERVER_NAME=http://grlc.np.YOUR.SERVER.DOMAIN/
+      - GRLC_SERVER_NAME=grlc.np.YOUR.SERVER.DOMAIN
