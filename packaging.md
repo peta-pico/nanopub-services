@@ -13,6 +13,10 @@ Create zip files (might need sudo):
     $ tar -czvf mongodb.tar.gz data/mongodb
     $ tar -czvf virtuoso.tar.gz data/virtuoso
 
+Start the services again:
+
+    $ docker-compose start
+
 ## Removing journal ID in MongoDB
 
 Set up MongoDB in local empty instance of this repo:
