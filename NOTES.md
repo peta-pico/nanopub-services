@@ -2,13 +2,63 @@
 
 ## Retractions
 
-From retracted nanopublication (triple already in admin graph):
+Get retraction info for nanopubs:
 
-    <*NPURI*> npa:hasValidSignatureForPublicKey "*PUBLICKEY*"
+prefix np: <http://www.nanopub.org/nschema#>
+prefix npa: <http://purl.org/nanopub/admin/>
+prefix npx: <http://purl.org/nanopub/x/>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
-From retraction nanopublication (triple needs to be added):
+select ?np ?retraction where {
+  graph npa:graph {
+    ?np npa:hasHeadGraph ?h .
+    ?np npa:creationDay ?__day_iri .
+    ?np npa:creationMonth ?__month_iri .
+    ?np npa:creationYear ?__year_iri .
+    ?np npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
+  }
+  optional {
+    graph npa:graph {
+      ?retraction npa:hasHeadGraph ?rh .
+      ?retraction npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
+    }
+    graph ?rh {
+      ?retraction np:hasAssertion ?ra .
+    }
+    graph ?ra {
+      ?_somebody npx:retracts ?np .
+    }
+  }
+}
 
-    <*NPURI*> npa:wasRetractedWithPublicKey "*PUBLICKEY*"
+Get only nanopubs that haven't been retracted:
+
+prefix np: <http://www.nanopub.org/nschema#>
+prefix npa: <http://purl.org/nanopub/admin/>
+prefix npx: <http://purl.org/nanopub/x/>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+select ?np where {
+  graph npa:graph {
+    ?np npa:hasHeadGraph ?h .
+    ?np npa:creationDay ?__day_iri .
+    ?np npa:creationMonth ?__month_iri .
+    ?np npa:creationYear ?__year_iri .
+    ?np npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
+  }
+  filter not exists {
+    graph npa:graph {
+      ?retraction npa:hasHeadGraph ?rh .
+      ?retraction npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
+    }
+    graph ?rh {
+      ?retraction np:hasAssertion ?ra .
+    }
+    graph ?ra {
+      ?_somebody npx:retracts ?np .
+    }
+  }
+}
 
 
 ## General references
@@ -30,3 +80,8 @@ we add this triple also to the admin graph.
 ## Something-to-nanopub references
 
 ...
+
+
+## Full date
+
+Add full date to admin graph.
