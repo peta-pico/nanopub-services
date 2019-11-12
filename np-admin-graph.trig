@@ -5,5 +5,5 @@ npa:graph {
     npa:creationDay <http://purl.org/nanopub/admin/date/*YEAR-MONTH-DAY*> ;
     npa:creationMonth <http://purl.org/nanopub/admin/date/*YEAR-MONTH*> ;
     npa:creationYear <http://purl.org/nanopub/admin/date/*YEAR*> ;
-    npa:hasValidSignatureForPublicKey "*PUBLICKEY*" .  
+    npa:hasValidSignatureForPublicKey "*PUBLICKEY*" .
 }
