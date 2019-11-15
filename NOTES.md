@@ -1,9 +1,23 @@
 # Features for next version
 
+## Full date
+
+Add full date to npa:graph:
+
+    <*THISNP*> dct:created "*DATETIME*"^^xsd:dateTime .
+
+If no creation date is provided:
+
+    <*THISNP*> dct:created "" .
+
+
 ## Retractions
+
+No change needed in the admin graph.
 
 Get retraction info for nanopubs:
 
+```
 prefix np: <http://www.nanopub.org/nschema#>
 prefix npa: <http://purl.org/nanopub/admin/>
 prefix npx: <http://purl.org/nanopub/x/>
@@ -30,9 +44,11 @@ select ?np ?retraction where {
     }
   }
 }
+```
 
 Get only nanopubs that haven't been retracted:
 
+```
 prefix np: <http://www.nanopub.org/nschema#>
 prefix npa: <http://purl.org/nanopub/admin/>
 prefix npx: <http://purl.org/nanopub/x/>
@@ -59,13 +75,7 @@ select ?np where {
     }
   }
 }
-
-
-## General references
-
-Whenever a nanopublication contains a potential trusty URI (or potential trusty URI plus suffix) then this reference should be added to the admin graph:
-
-    <*NPURI1*> npa:refersToNanopub <*NPURI2*>
+```
 
 
 ## Nanopub-to-nanopub references
@@ -74,14 +84,16 @@ Whenever a nanopublication contains a triple like this
 
     <*THISNP*> <*SOMEPREDICATE*> <*TRUSTYURI*>
 
-we add this triple also to the admin graph.
+we add this triple also to the graph npa:networkGraph.
 
 
-## Something-to-nanopub references
+## General references
 
-...
+Whenever a nanopublication otherwise contains a potential trusty URI (or potential trusty URI plus suffix) then this reference should be added to the graph npa:networkGraph:
 
+    <*THISNP*> npa:refersToNanopub <*OTHERNP*>
 
-## Full date
+Except if it is the nanopub's own artifact code. Then this reference should be added to the graph npa:graph:
 
-Add full date to admin graph.
+    <*THISNP*> npa:hasSubUri <*SUBURI*>
+
