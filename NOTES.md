@@ -11,73 +11,6 @@ If no creation date is provided:
     <*THISNP*> dct:created "" .
 
 
-## Retractions
-
-No change needed in the admin graph.
-
-Get retraction info for nanopubs:
-
-```
-prefix np: <http://www.nanopub.org/nschema#>
-prefix npa: <http://purl.org/nanopub/admin/>
-prefix npx: <http://purl.org/nanopub/x/>
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-
-select ?np ?retraction where {
-  graph npa:graph {
-    ?np npa:hasHeadGraph ?h .
-    ?np npa:creationDay ?__day_iri .
-    ?np npa:creationMonth ?__month_iri .
-    ?np npa:creationYear ?__year_iri .
-    ?np npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
-  }
-  optional {
-    graph npa:graph {
-      ?retraction npa:hasHeadGraph ?rh .
-      ?retraction npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
-    }
-    graph ?rh {
-      ?retraction np:hasAssertion ?ra .
-    }
-    graph ?ra {
-      ?_somebody npx:retracts ?np .
-    }
-  }
-}
-```
-
-Get only nanopubs that haven't been retracted:
-
-```
-prefix np: <http://www.nanopub.org/nschema#>
-prefix npa: <http://purl.org/nanopub/admin/>
-prefix npx: <http://purl.org/nanopub/x/>
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-
-select ?np where {
-  graph npa:graph {
-    ?np npa:hasHeadGraph ?h .
-    ?np npa:creationDay ?__day_iri .
-    ?np npa:creationMonth ?__month_iri .
-    ?np npa:creationYear ?__year_iri .
-    ?np npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
-  }
-  filter not exists {
-    graph npa:graph {
-      ?retraction npa:hasHeadGraph ?rh .
-      ?retraction npa:hasValidSignatureForPublicKey ?_pubkey_xsd_string .
-    }
-    graph ?rh {
-      ?retraction np:hasAssertion ?ra .
-    }
-    graph ?ra {
-      ?_somebody npx:retracts ?np .
-    }
-  }
-}
-```
-
-
 ## Nanopub-to-nanopub references
 
 Whenever a nanopublication contains a triple like this
@@ -95,5 +28,5 @@ Whenever a nanopublication otherwise contains a potential trusty URI (or potenti
 
 Except if it is the nanopub's own artifact code. Then this reference should be added to the graph npa:graph:
 
-    <*THISNP*> npa:hasSubUri <*SUBURI*>
+    <*THISNP*> npa:hasSubIri <*SUBURI*>
 

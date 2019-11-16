@@ -1,9 +1,13 @@
 @prefix npa: <http://purl.org/nanopub/admin/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 npa:graph {
   <*NPURI*> npa:hasHeadGraph <*HEADURI*> ;
+    dct:created "*DATETIME*"^^xsd:dateTime ;
     npa:creationDay <http://purl.org/nanopub/admin/date/*YEAR-MONTH-DAY*> ;
     npa:creationMonth <http://purl.org/nanopub/admin/date/*YEAR-MONTH*> ;
     npa:creationYear <http://purl.org/nanopub/admin/date/*YEAR*> ;
-    npa:hasValidSignatureForPublicKey "*PUBLICKEY*" .
+    npa:hasValidSignatureForPublicKey "*PUBLICKEY*" ;
+    npa:note "*ANY-FURTHER-NOTES*" ;
+    npa:hasSubIri *SUB-IRIS...* .
 }
