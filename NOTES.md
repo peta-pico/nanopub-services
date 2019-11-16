@@ -1,16 +1,5 @@
 # Features for next version
 
-## Full date
-
-Add full date to npa:graph:
-
-    <*THISNP*> dct:created "*DATETIME*"^^xsd:dateTime .
-
-If no creation date is provided:
-
-    <*THISNP*> dct:created "" .
-
-
 ## Nanopub-to-nanopub references
 
 Whenever a nanopublication contains a triple like this
