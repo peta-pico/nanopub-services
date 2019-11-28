@@ -11,3 +11,8 @@ npa:graph {
     npa:note "*ANY-FURTHER-NOTES*" ;
     npa:hasSubIri *SUB-IRIS...* .
 }
+
+npa:networkGraph {
+  <*NPURI*> <*INTER-NP-RELATION*> *REFERENCED-NPURIS...* .
+  <*NPURI*> npa:refersToNanopub *REFERENCED-NPURI...* .
+}
