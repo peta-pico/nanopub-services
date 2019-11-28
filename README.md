@@ -34,10 +34,10 @@ directory):
 These services will automatically sync with the network, but to speed things up,
 you can download and extract pre-built database packages:
 
-    $ wget https://zenodo.org/record/2656547/files/mongodb0.tar.gz
+    $ wget https://zenodo.org/record/3556371/files/mongodb0.tar.gz
     $ tar -xvzf mongodb0.tar.gz && rm mongodb0.tar.gz
 
-    $ wget https://zenodo.org/record/2656547/files/virtuoso.tar.gz
+    $ wget https://zenodo.org/record/3556371/files/virtuoso.tar.gz
     $ tar -xvzf virtuoso.tar.gz && rm virtuoso.tar.gz
 
 
