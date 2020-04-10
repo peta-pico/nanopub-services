@@ -11,7 +11,7 @@ Stop services:
 Create zip files (might need sudo):
 
     $ tar -czvf mongodb.tar.gz data/mongodb
-    $ tar -czvf virtuoso.tar.gz data/virtuoso
+    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps -czvf virtuoso.tar.gz data/virtuoso
 
 Start the services again:
 
@@ -23,9 +23,9 @@ Set up MongoDB in local empty instance of this repo:
 
     $ tar -xvzf mongodb.tar.gz
 
-Remove lock files:
+Remove lock files, if any (might need sudo):
 
-    $ rm data/mongodb/*.lock
+    $ rm -f data/mongodb/*.lock
 
 Run MongoDB:
 
@@ -46,6 +46,11 @@ Check again:
 Stopping MongoDB:
 
     $ docker stop $(docker ps -a -q --filter ancestor=nanopub/mongo)
+
+Remove lock files again, if any, and diagnostic data (might need sudo):
+
+    $ rm -f data/mongodb/*.lock
+    $ rm -rf data/mongodb/diagnostic.data
 
 Making new archive (might need sudo):
 
