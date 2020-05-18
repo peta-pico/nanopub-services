@@ -13,6 +13,6 @@ npa:graph {
 }
 
 npa:networkGraph {
-  <*NPURI*> <*INTER-NP-RELATION*> *REFERENCED-NPURIS...* .
-  <*NPURI*> npa:refersToNanopub *REFERENCED-NPURI...* .
+  <*NPURI*> <*INTER-NP-PREDICATE*> *REFERENCED-NPURIS...* .
+  <*NPURI*> npa:refersToNanopub *REFERENCED-NPURIS...* .
 }
