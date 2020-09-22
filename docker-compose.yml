@@ -43,6 +43,7 @@ services:
     environment:
       - SPARQL_UPDATE=true
       - VIRT_SPARQL_MaxQueryExecutionTime=600
+      - VIRT_SPARQL_MaxQueryCostEstimationTime=0
     volumes:
       - ./data/virtuoso:/data
   grlc:
