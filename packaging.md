@@ -4,6 +4,12 @@ To avoid long loading times for new service sites.
 
 ## Building package
 
+Make Virtuoso checkpoint:
+
+    $ docker exec -it nanopubservices_virtuoso_1 /usr/local/virtuoso-opensource/bin/isql-v
+
+Type "checkpoint; exit;".
+
 Stop services:
 
     $ docker-compose stop
@@ -11,7 +17,7 @@ Stop services:
 Create zip files (might need sudo):
 
     $ tar -czvf mongodb.tar.gz data/mongodb
-    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps -czvf virtuoso.tar.gz data/virtuoso
+    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx -czvf virtuoso.tar.gz data/virtuoso
 
 Start the services again:
 
