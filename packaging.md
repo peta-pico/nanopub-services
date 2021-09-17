@@ -8,7 +8,7 @@ Make Virtuoso checkpoint:
 
     $ docker exec -it nanopubservices_virtuoso_1 /usr/local/virtuoso-opensource/bin/isql-v
 
-Type "checkpoint; exit;".
+Type "checkpoint;", then "exit;".
 
 Stop services:
 
