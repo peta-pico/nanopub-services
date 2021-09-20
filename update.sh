@@ -7,7 +7,7 @@ docker-compose stop server
 echo "Making a Virtuoso checkpoint..."
 docker-compose exec virtuoso isql-v EXEC=checkpoint
 echo "Removing Virtuoso transaction log (which should be empty now)..."
-rm data/virtuoso/virtuoso.trx
+docker-compose exec virtuoso rm -f /data/virtuoso.trx
 echo "Waiting 5 seconds"
 sleep 5s
 echo "Stopping all containers..."
