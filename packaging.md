@@ -4,13 +4,15 @@ To avoid long loading times for new service sites.
 
 ## Building package
 
-Make Virtuoso checkpoint:
+Stop server from collecting more nanopubs:
 
-    $ docker exec -it nanopubservices_virtuoso_1 /usr/local/virtuoso-opensource/bin/isql-v
+    $ docker-compose stop server
 
-Type "checkpoint;", then "exit;".
+Wait a few seconds then make Virtuoso checkpoint:
 
-Stop services:
+    $ docker-compose exec virtuoso isql-v EXEC=checkpoint
+
+Stop all services:
 
     $ docker-compose stop
 
