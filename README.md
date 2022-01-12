@@ -88,6 +88,17 @@ you see the message "Successfully updated" in the end, then probably everything
 went well.
 
 
-<h2 id="services">Services</h2>
+## Services
 
-...
+### Nanopub Server
+
+A service to publish and individually retrieve nanopublications.
+
+<h3 id="grlc-np-api">grlc Nanopub API</h3>
+
+The [grlc](https://grlc.io)-based [nanopub-api](https://github.com/peta-pico/nanopub-api) running on all the published nanopublications.
+
+<h3 id="np-ldf">Nanopub LDF Server</h3>
+
+A service providing [Linked Data Fragments (LDF)](https://linkeddatafragments.org/) access to all the published nanopublications.
+
