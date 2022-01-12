@@ -86,3 +86,8 @@ Run this to update the services:
 This will shutdown the services, update everything, and start them up again. If
 you see the message "Successfully updated" in the end, then probably everything
 went well.
+
+
+<h2 id="services">Services</h2>
+
+...
