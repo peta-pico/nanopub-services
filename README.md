@@ -98,7 +98,7 @@ A service to publish and individually retrieve nanopublications.
 
 The [grlc](https://grlc.io)-based [nanopub-api](https://github.com/peta-pico/nanopub-api) running on all the published nanopublications.
 
-<h3 id="np-ldf">Nanopub LDF Server</h3>
+<h3 id="np-ldf-server">Nanopub LDF Server</h3>
 
 A service providing [Linked Data Fragments (LDF)](https://linkeddatafragments.org/) access to all the published nanopublications.
 
