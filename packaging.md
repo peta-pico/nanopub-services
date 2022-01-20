@@ -19,7 +19,7 @@ Stop all services:
 Create zip files (might need sudo):
 
     $ tar -czvf mongodb.tar.gz data/mongodb
-    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx -czvf virtuoso.tar.gz data/virtuoso
+    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx --exclude=data/virtuoso/.dba_pwd_set -czvf virtuoso.tar.gz data/virtuoso
 
 Start the services again:
 
