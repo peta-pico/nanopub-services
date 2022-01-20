@@ -28,24 +28,30 @@ services:
     depends_on:
       - virtuoso
     environment:
-      - ENDPOINT=http://virtuoso:8890/sparql
-      - UPDATE_ENDPOINT=http://virtuoso:8890/sparql
+      - ENDPOINT=http://virtuoso:1111/
+      - UPDATE_ENDPOINT=http://virtuoso:1111/
+      - USERNAME=dba
+      - PASSWORD=dba
       - MODULE=nanopub
+      - REPO_TYPE=virtuoso
     volumes:
       - ./data/rdfsink:/data
   virtuoso:
     image: nanopub/virtuoso
 #    image: tenforce/virtuoso
+#    image: openlink/virtuoso-opensource-7:latest
     restart: unless-stopped
 #    ports:
 #      - 8890:8890
 #      - 1111:1111
     environment:
-      - SPARQL_UPDATE=true
+#      - SPARQL_UPDATE=true
+      - DBA_PASSWORD=dba
       - VIRT_SPARQL_MaxQueryExecutionTime=600
       - VIRT_SPARQL_MaxQueryCostEstimationTime=0
     volumes:
       - ./data/virtuoso:/data
+#      - ./data/virtuoso:/database  # for openlink/virtuoso-opensource-7
   grlc:
     image: nanopub/grlc
 #    image: clariah/grlc:dev
