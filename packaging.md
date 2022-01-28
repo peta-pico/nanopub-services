@@ -27,7 +27,7 @@ Start the services again:
 
 ## Removing journal ID in MongoDB
 
-Set up MongoDB in local empty instance of this repo:
+Extract MongoDB in empty directory:
 
     $ tar -xvzf mongodb.tar.gz
 
