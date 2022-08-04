@@ -73,6 +73,7 @@ services:
       - 7881:80
   ldf:
     image: nanopub/ldf
+    restart: unless-stopped
     ports:
       - 7882:3000
 #    environment:
