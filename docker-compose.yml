@@ -14,6 +14,10 @@ services:
       - NPS_WAIT_MS_BEFORE_PEER_SCAN=1000
     ports:
       - 7880:8080
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
   db:
     image: nanopub/mongo
 #    image: mongo
