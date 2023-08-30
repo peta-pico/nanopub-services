@@ -53,7 +53,7 @@ Check again:
 
 Stopping MongoDB:
 
-    $ docker stop $(docker ps -a -q --filter ancestor=nanopub/mongo)
+    $ docker stop DOCKER-CONTAINER-ID
 
 Remove lock files again, if any, and diagnostic data (might need sudo):
 
