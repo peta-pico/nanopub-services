@@ -39,7 +39,7 @@ Run MongoDB:
 
     $ docker run -v $(pwd)/data/mongodb:/data/db -p 27017:27017 -d nanopub/mongo
 
-Check journal ID:
+Check journal ID (`mongosh` instead of `mongo` for newer versions; has to installed via `apt install mongodb-org` and installation sources added first):
 
     $ mongo --eval "db.getSiblingDB('nanopub-server').getCollection('journal').find({'_id':'journal-id'});"
 
