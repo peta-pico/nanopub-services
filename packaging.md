@@ -16,7 +16,7 @@ Stop all services:
 
     $ docker-compose stop
 
-Create zip files (might need sudo):
+Create zip files (might need sudo, and to prevent tar from aborting it might need to be enclosed in `nohup ... &`):
 
     $ tar -czvf mongodb.tar.gz data/mongodb
     $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx --exclude=data/virtuoso/.dba_pwd_set -czvf virtuoso.tar.gz data/virtuoso
