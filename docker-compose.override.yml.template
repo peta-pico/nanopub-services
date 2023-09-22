@@ -14,4 +14,4 @@ services:
       - PASSWORD=dba  # Change this here and below to a strong password if virtuoso:8890 or virtuoso:1111 are opened
   virtuoso:
     environment:
-      - DBA_PASSWORD=dba
+      - DBA_PASSWORD=dba  # The password MUST NOT contain special characters like $ or /
